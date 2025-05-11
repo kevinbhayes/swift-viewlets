@@ -21,6 +21,6 @@ All Views and Layouts are fully documented (Build Documentation to add to Xcodeâ
 
 ## Contributing
 
-More info coming soon. Feel free to contact me in the meantime at https://mastodon.social/@kevinbhayes
+More info coming soon. Feel free to contact me in the meantime at https://mastodon.social/@kevinbhayes or swiftviewlets @ swiftlets.net
 
 

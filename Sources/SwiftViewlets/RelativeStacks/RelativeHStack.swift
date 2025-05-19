@@ -129,6 +129,10 @@ public struct RelativeHStack: Layout {
 			}
 		}
 
+		// we’re done calculating alignment, so we can add it to the cache
+		cache.maxAlignmentOffset = maxXOffset
+
+
 		// total portion of the view width that has a relativeStackPortion applied
 		let totalMultipliedWidth = totalMultiplier * width
 		let remainingWidth = nonSpacingWidth - totalMultipliedWidth
@@ -183,9 +187,6 @@ public struct RelativeHStack: Layout {
 		}
 
 		// set remaining cache values and return size
-
-		cache.maxAlignmentOffset = maxXOffset
-
 		cache.totalLength = width
 
 		return CGSize(width: width, height: maxHeight)

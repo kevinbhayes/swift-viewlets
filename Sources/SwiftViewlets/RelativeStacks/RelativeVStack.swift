@@ -37,6 +37,9 @@ import SwiftUI
 ///  	.frame(width: 300, height: 300)
 /// ```
 public struct RelativeVStack: Layout {
+	let alignment: HorizontalAlignment
+	let spacing: CGFloat
+
 	/// Creates an instance with the given spacing and horizontal alignment.
 	/// - Parameter alignment: The guide for aligning the subviews in this stack.
 	/// - Parameter spacing: The amount of space to place between each subview. The default is 0.0 points.
@@ -45,9 +48,6 @@ public struct RelativeVStack: Layout {
 		self.spacing = spacing
 	}
 
-
-	let alignment: HorizontalAlignment
-	let spacing: CGFloat
 
 	public func makeCache(subviews: Subviews) -> RelativeCacheInfo {
 		RelativeCacheInfo()
@@ -74,6 +74,7 @@ public struct RelativeVStack: Layout {
 
 		// to calculate the widest view to return
 		var maxWidth: CGFloat = .zero
+		// initialize the cache
 		updateCache(&cache, subviews: subviews)
 
 		// total heights of views that have relativeStackPortion applied
@@ -129,6 +130,9 @@ public struct RelativeVStack: Layout {
 			}
 		}
 
+		// we can return early, but we always want to set the alignment cache
+		cache.maxAlignmentOffset = maxXOffset
+
 		// total portion of the view height that has a relativeStackPortion applied
 		let totalMultipliedHeight = totalMultiplier * height
 		let remainingHeight = nonSpacingHeight - totalMultipliedHeight
@@ -183,8 +187,6 @@ public struct RelativeVStack: Layout {
 		}
 
 		// set remaining cache values and return size
-
-		cache.maxAlignmentOffset = maxXOffset
 
 		cache.totalLength = height
 

@@ -19,8 +19,11 @@ All Views and Layouts are fully documented (Build Documentation to add to Xcodeâ
 ### Views:
 - coming soon
 
+### Extensions:
+- **Image** - an init function to allow initializing an Image view with Data.
+
 ## Contributing
 
-More info coming soon. Feel free to contact me in the meantime at https://mastodon.social/@kevinbhayes or swiftviewlets @ swiftlets.net
+More info coming soon. Feel free to contact me in the meantime at https://mastodon.social/@kevinbhayes or `swiftviewlets @ swiftlets.net`
 
 

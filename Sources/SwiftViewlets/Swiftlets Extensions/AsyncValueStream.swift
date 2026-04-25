@@ -13,13 +13,13 @@ import Swiftlets
 /// The action will be degistered when the view is removed from the hierarchy.
 ///
 
-private struct AsyncValueStreamViewModifier<T: Sendable>: ViewModifier {
+public struct AsyncValueStreamViewModifier<T: Sendable>: ViewModifier {
 	@State var viewActionId: AsyncValueStream<T>.ID?
 
 	let valueStream: AsyncValueStream<T>
 	let action: AsyncValueStream<T>.Action
 
-	func body(content: Content) -> some View {
+	public func body(content: Content) -> some View {
 		content
 			.task {
 				viewActionId = await valueStream.registerAction { value in
@@ -44,7 +44,7 @@ extension View {
 	/// - Returns: A view that triggers `action` when the stream yields a value
 	///
 	/// You do not need to deregister the action. It will automatically do so when the view is removed from the SwiftUI view hierarchy.
-	func onReceive<T: Sendable>(_ stream: AsyncValueStream<T>, action: @escaping AsyncValueStream<T>.Action) -> some View {
+	public func onReceive<T: Sendable>(_ stream: AsyncValueStream<T>, action: @escaping AsyncValueStream<T>.Action) -> some View {
 		modifier(AsyncValueStreamViewModifier<T>(valueStream: stream, action: action))
 	}
 
@@ -54,7 +54,7 @@ extension View {
 	/// - Returns: A view that triggers `action` when the stream yields Void
 	///
 	/// You do not need to deregister the action. It will automatically do so when the view is removed from the SwiftUI view hierarchy.
-	func onReceive(_ stream: AsyncValueStream<Void>, action: @escaping AsyncValueStream<Void>.VoidAction) -> some View {
+	public func onReceive(_ stream: AsyncValueStream<Void>, action: @escaping AsyncValueStream<Void>.VoidAction) -> some View {
 		modifier(AsyncValueStreamViewModifier<Void>(valueStream: stream, action: action))
 	}
 }

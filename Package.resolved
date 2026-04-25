@@ -1,0 +1,15 @@
+{
+  "originHash" : "977f694b23b16463ab2351365a7aa3f337a08a14706bdcd40bd40b18487fd700",
+  "pins" : [
+    {
+      "identity" : "swiftlets",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kevinbhayes/swiftlets.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "1cbee8fbf2ea07b217d7731f87d3a61a47f62032"
+      }
+    }
+  ],
+  "version" : 3
+}

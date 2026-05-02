@@ -69,7 +69,7 @@ struct AsyncValueStreamView: View {
 		VStack(spacing: 32) {
 			Text("Value: \(currentValue)")
 			Button("Publish") {
-				publisher.send(Int.random(in: 1 ... 100))
+				publisher.sendDetached(Int.random(in: 1 ... 100))
 			}
 			Button("Cancel Publish") {
 				Task {
